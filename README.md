@@ -16,6 +16,13 @@ The following repositories are being monitored for changes.
 | ceph/ceph-ansible       | stable-3.2                                | osism/docker-ceph-ansible  |
 | openstack/kolla-ansible | stable/queens, stable/rocky, stable/stein | osism/docker-kolla-ansible |
 
+Usage
+-----
+
+* create `configuration/crond.env` on basis of `configuration/crond.env.sample`
+* build the container image with `docker-compose build`
+* start the container with `docker-compose up -d`
+
 License
 -------
 

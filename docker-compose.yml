@@ -1,0 +1,8 @@
+---
+version: '3'
+services:
+  crond:
+    container_name: travis-trigger
+    build: .
+    env_file:
+      - configuration/crond.env

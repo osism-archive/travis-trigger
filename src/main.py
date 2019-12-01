@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from datetime import datetime
 import io
 import os
@@ -111,7 +113,7 @@ def check_repository(repository, branch):
 
     try:
         mc.put_object('trigger', "%s/updated" % repository, io.BytesIO(store), len(store))
-    except: 
+    except:
         pass
 
 
