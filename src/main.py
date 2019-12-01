@@ -36,6 +36,15 @@ REPOSITORIES = {
             'parameter': 'CEPH_VERSION'
         }
     },
+    'ceph-master': {
+        'repository': 'ceph/ceph-ansible',
+        'branch': 'master',
+        'target': {
+            'repository': 'docker-ceph-ansible',
+            'version': 'master',
+            'parameter': 'CEPH_VERSION'
+        }
+    },
     'openstack-queens': {
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/queens',

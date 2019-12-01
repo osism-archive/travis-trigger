@@ -11,7 +11,7 @@ The following repositories are being monitored for changes.
 
 | Repository              | Branches                                  | Target repository          |
 |-------------------------|-------------------------------------------|----------------------------|
-| ceph/ceph-ansible       | stable-3.2, stable-4.0                    | osism/docker-ceph-ansible  |
+| ceph/ceph-ansible       | master, stable-3.2, stable-4.0            | osism/docker-ceph-ansible  |
 | openstack/kolla-ansible | stable/queens, stable/rocky, stable/stein | osism/docker-kolla-ansible |
 
 Workflow
