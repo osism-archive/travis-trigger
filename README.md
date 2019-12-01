@@ -1,7 +1,5 @@
 # travis-trigger
 
-[![Build Status](https://travis-ci.org/osism/travis-trigger.svg?branch=master)](https://travis-ci.org/osism/travis-trigger)
-
 This script gets the latest commit Atom feed from Github for a set of defined repositories.
 If a commit has been added since the last execution, a build on a definable repository is
 triggered on Travis. The timestamp of the last change is saved on a Minio server.
