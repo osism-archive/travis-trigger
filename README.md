@@ -4,6 +4,8 @@ This script gets the latest commit Atom feed from Github for a set of defined re
 If a commit has been added since the last execution, a build on a definable repository is
 triggered on Travis. The timestamp of the last change is saved on a Minio server.
 
+![Workflow](https://raw.githubusercontent.com/osism/travis-trigger/master/images/workflow.png)
+
 We use this script to trigger a rebuild of our Docker images when changes are made in
 upstream projects. This enables us to provide up-to-date images in a timely manner.
 
