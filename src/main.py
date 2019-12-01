@@ -27,6 +27,15 @@ REPOSITORIES = {
             'parameter': 'CEPH_VERSION'
         }
     },
+    'ceph-nautilus': {
+        'repository': 'ceph/ceph-ansible',
+        'branch': 'stable-4.0',
+        'target': {
+            'repository': 'docker-ceph-ansible',
+            'version': 'nautilus',
+            'parameter': 'CEPH_VERSION'
+        }
+    },
     'openstack-queens': {
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/queens',
