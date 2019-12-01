@@ -4,8 +4,6 @@ This script gets the latest commit Atom feed from Github for a set of defined re
 If a commit has been added since the last execution, a build on a definable repository is
 triggered on Travis. The timestamp of the last change is saved on a Minio server.
 
-![Workflow](https://raw.githubusercontent.com/osism/travis-trigger/master/images/workflow.png)
-
 We use this script to trigger a rebuild of our Docker images when changes are made in
 upstream projects. This enables us to provide up-to-date images in a timely manner.
 
@@ -16,12 +14,23 @@ The following repositories are being monitored for changes.
 | ceph/ceph-ansible       | stable-3.2, stable-4.0                    | osism/docker-ceph-ansible  |
 | openstack/kolla-ansible | stable/queens, stable/rocky, stable/stein | osism/docker-kolla-ansible |
 
+Workflow
+--------
+
+![Workflow](https://raw.githubusercontent.com/osism/travis-trigger/master/images/workflow.png)
+
+1. Get the timestamp of the last detected commit from a Minio server
+2. Get the Atom feed of the latest commits from Github
+3. If the last commit is newer than the last detected commit then trigger a build via the
+   Travis CI API
+4. Post the timestamp of the last detected commit to a Minio server
+
 Usage
 -----
 
-* create `configuration/crond.env` on basis of `configuration/crond.env.sample`
-* build the container image with `docker-compose build`
-* start the container with `docker-compose up -d`
+* Create `configuration/crond.env` on basis of `configuration/crond.env.sample`
+* Build the container image with `docker-compose build`
+* Start the container with `docker-compose up -d`
 
 License
 -------
