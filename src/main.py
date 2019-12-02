@@ -72,6 +72,15 @@ REPOSITORIES = {
             'parameter': 'OPENSTACK_VERSION'
         }
     },
+    'openstack-master': {
+        'repository': 'openstack/kolla-ansible',
+        'branch': 'master',
+        'target': {
+            'repository': 'docker-kolla-ansible',
+            'version': 'master',
+            'parameter': 'OPENSTACK_VERSION'
+        }
+    }
 }
 
 
