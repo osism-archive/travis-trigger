@@ -17,8 +17,9 @@ TRAVIS_ACCESS_TOKEN = os.getenv('TRAVIS_ACCESS_TOKEN')
 
 
 # FIXME(berendt): move to YAML file
-REPOSITORIES = {
+RESSOURCES = {
     'ceph-luminous': {
+        'type': 'git',
         'repository': 'ceph/ceph-ansible',
         'branch': 'stable-3.2',
         'target': {
@@ -28,6 +29,7 @@ REPOSITORIES = {
         }
     },
     'ceph-nautilus': {
+        'type': 'git',
         'repository': 'ceph/ceph-ansible',
         'branch': 'stable-4.0',
         'target': {
@@ -37,6 +39,7 @@ REPOSITORIES = {
         }
     },
     'ceph-master': {
+        'type': 'git',
         'repository': 'ceph/ceph-ansible',
         'branch': 'master',
         'target': {
@@ -46,6 +49,7 @@ REPOSITORIES = {
         }
     },
     'openstack-queens': {
+        'type': 'git',
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/queens',
         'target': {
@@ -55,6 +59,7 @@ REPOSITORIES = {
         }
     },
     'openstack-rocky': {
+        'type': 'git',
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/rocky',
         'target': {
@@ -64,6 +69,7 @@ REPOSITORIES = {
         }
     },
     'openstack-stein': {
+        'type': 'git',
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/stein',
         'target': {
@@ -73,6 +79,7 @@ REPOSITORIES = {
         }
     },
     'openstack-master': {
+        'type': 'git',
         'repository': 'openstack/kolla-ansible',
         'branch': 'master',
         'target': {
@@ -86,15 +93,15 @@ REPOSITORIES = {
 
 def trigger_build(repository, branch, message):
 
-    print("Triggering %s @ %s" % (REPOSITORIES[repository]['target']['version'], REPOSITORIES[repository]['target']['repository']))
+    print("Triggering %s @ %s" % (RESSOURCES[repository]['target']['version'], RESSOURCES[repository]['target']['repository']))
 
-    url = "https://api.travis-ci.org/repo/osism%%2F%s/requests" % REPOSITORIES[repository]['target']['repository']
+    url = "https://api.travis-ci.org/repo/osism%%2F%s/requests" % RESSOURCES[repository]['target']['repository']
     headers = {
         'Travis-API-Version': '3',
         'Authorization': "token %s" % TRAVIS_ACCESS_TOKEN
     }
-    target_parameter = REPOSITORIES[repository]['target']['parameter']
-    target_version = REPOSITORIES[repository]['target']['version']
+    target_parameter = RESSOURCES[repository]['target']['parameter']
+    target_version = RESSOURCES[repository]['target']['version']
     json = {
         'request': {
             'branch': 'master',
@@ -125,7 +132,7 @@ def check_repository(repository, branch):
     except:
         last_updated = datetime(1970, 1, 1, tzinfo=pytz.UTC)
 
-    url = "https://github.com/%s/commits/%s.atom" % (REPOSITORIES[repository]['repository'], branch)
+    url = "https://github.com/%s/commits/%s.atom" % (RESSOURCES[repository]['repository'], branch)
     response = requests.get(url)
     feed = atoma.parse_atom_bytes(response.content)
     updated = feed.updated
@@ -133,7 +140,7 @@ def check_repository(repository, branch):
     if updated > last_updated:
         last_entry = feed.entries[0]
         commit = last_entry.links[0].href.split('/')[-1]
-        message = "%s (%s, %s)" % (REPOSITORIES[repository]['repository'], branch, commit)
+        message = "%s (%s, %s)" % (RESSOURCES[repository]['repository'], branch, commit)
         trigger_build(repository, branch, message)
 
     store = updated.strftime('%Y-%m-%dT%H:%M:%SZ').encode('utf-8')
@@ -145,9 +152,11 @@ def check_repository(repository, branch):
 
 
 def main():
-    for repository in REPOSITORIES:
-        print("Checking %s @ %s" % (REPOSITORIES[repository]['branch'], REPOSITORIES[repository]['repository']))
-        check_repository(repository, REPOSITORIES[repository]['branch'])
+    for ressource in RESSOURCES:
+
+        if RESSOURCES[ressource]['type'] == 'git':
+            print("Checking %s @ %s" % (RESSOURCES[ressource]['branch'], RESSOURCES[ressource]['repository']))
+            check_repository(ressource, RESSOURCES[ressource]['branch'])
 
 
 if __name__ == '__main__':
