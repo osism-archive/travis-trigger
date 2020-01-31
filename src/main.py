@@ -98,6 +98,16 @@ RESSOURCES = {
             'version': 'master',
             'parameter': 'OPENSTACK_VERSION'
         }
+    },
+    'docker-openstack-master': {
+        'type': 'git',
+        'repository': 'openstack/kolla',
+        'branch': 'master',
+        'target': {
+            'repository': 'docker-kolla-docker',
+            'version': 'master',
+            'parameter': 'TRAVIS_OPENSTACK_VERSION'
+        }
     }
 }
 
