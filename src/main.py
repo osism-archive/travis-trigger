@@ -108,6 +108,36 @@ RESSOURCES = {
             'version': 'master',
             'parameter': 'TRAVIS_OPENSTACK_VERSION'
         }
+    },
+    'docker-openstack-rocky': {
+        'type': 'git',
+        'repository': 'openstack/kolla',
+        'branch': 'stable/rocky',
+        'target': {
+            'repository': 'docker-kolla-docker',
+            'version': 'rocky',
+            'parameter': 'TRAVIS_OPENSTACK_VERSION'
+        }
+    },
+    'docker-openstack-stein': {
+        'type': 'git',
+        'repository': 'openstack/kolla',
+        'branch': 'stable/stein',
+        'target': {
+            'repository': 'docker-kolla-docker',
+            'version': 'stein',
+            'parameter': 'TRAVIS_OPENSTACK_VERSION'
+        }
+    },
+    'docker-openstack-train': {
+        'type': 'git',
+        'repository': 'openstack/kolla',
+        'branch': 'stable/train',
+        'target': {
+            'repository': 'docker-kolla-docker',
+            'version': 'train',
+            'parameter': 'TRAVIS_OPENSTACK_VERSION'
+        }
     }
 }
 
