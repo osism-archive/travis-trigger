@@ -16,6 +16,12 @@ The following repositories are being monitored for changes.
 | openstack/kolla-ansible | master, stable/queens, stable/rocky, stable/stein | osism/docker-kolla-ansible |
 | openstack/kolla         | master, stable/rocky, stable/stein, stable/train  | osism/docker-kolla-docker  |
 
+The following images are being monitored for changes.
+
+| Image              | Tag                                          | Target repository             |
+|--------------------|----------------------------------------------|-------------------------------|
+| ceph/daemon        | latest                                       | osism/docker-ceph-container   |
+
 Workflow
 --------
 
