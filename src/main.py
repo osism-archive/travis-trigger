@@ -18,6 +18,16 @@ TRAVIS_ACCESS_TOKEN = os.getenv('TRAVIS_ACCESS_TOKEN')
 
 # FIXME(berendt): move to YAML file
 RESSOURCES = {
+    'ansible-community-ara': {
+        'type': 'git',
+        'repository': 'ansible-community/ara',
+        'branch': 'master',
+        'target': {
+            'repository': 'docker-ara-server',
+            'version': 'latest',
+            'parameter': 'VERSION'
+        }
+    },
     'ceph-daemon': {
         'type': 'docker',
         'image': 'ceph/daemon',
