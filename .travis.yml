@@ -1,0 +1,9 @@
+---
+language: python
+
+install:
+  - pip install -r test-requirements.txt
+
+script:
+  - flake8 --max-line-length=200 --ignore E722
+  - yamllint docker-compose.yml

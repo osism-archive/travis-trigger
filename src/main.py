@@ -201,7 +201,7 @@ def trigger_build(repository, branch, message):
         }
     }
 
-    response = requests.post(url, headers=headers, json=json)
+    requests.post(url, headers=headers, json=json)
 
 
 def check_image(image, tag):
@@ -233,6 +233,7 @@ def check_image(image, tag):
         mc.put_object('trigger', "%s/updated" % image, io.BytesIO(updated_str.encode('utf-8')), len(updated_str.encode('utf-8')))
     except:
         pass
+
 
 def check_repository(repository, branch):
     mc = Minio(MINIO_SERVER, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=True)
