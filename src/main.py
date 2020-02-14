@@ -23,6 +23,7 @@ RESSOURCES = {
         'repository': 'ansible-community/ara',
         'branch': 'master',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-ara-server',
             'version': 'latest',
             'parameter': 'VERSION'
@@ -34,6 +35,7 @@ RESSOURCES = {
         'tag': 'latest',
         'target': {
             'image': 'osism/ceph-daemon',
+            'organisation': 'osism',
             'repository': 'docker-ceph-container',
             'version': 'latest',
             'parameter': 'VERSION'
@@ -44,6 +46,7 @@ RESSOURCES = {
         'repository': 'ceph/ceph-ansible',
         'branch': 'stable-3.2',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-ceph-ansible',
             'version': 'luminous',
             'parameter': 'CEPH_VERSION'
@@ -54,6 +57,7 @@ RESSOURCES = {
         'repository': 'ceph/ceph-ansible',
         'branch': 'stable-4.0',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-ceph-ansible',
             'version': 'nautilus',
             'parameter': 'CEPH_VERSION'
@@ -64,6 +68,7 @@ RESSOURCES = {
         'repository': 'ceph/ceph-ansible',
         'branch': 'master',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-ceph-ansible',
             'version': 'master',
             'parameter': 'CEPH_VERSION'
@@ -74,6 +79,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/queens',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-ansible',
             'version': 'queens',
             'parameter': 'OPENSTACK_VERSION'
@@ -84,6 +90,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/rocky',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-ansible',
             'version': 'rocky',
             'parameter': 'OPENSTACK_VERSION'
@@ -94,6 +101,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla-ansible',
         'branch': 'stable/stein',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-ansible',
             'version': 'stein',
             'parameter': 'OPENSTACK_VERSION'
@@ -104,6 +112,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla-ansible',
         'branch': 'master',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-ansible',
             'version': 'master',
             'parameter': 'OPENSTACK_VERSION'
@@ -114,6 +123,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla',
         'branch': 'master',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-docker',
             'version': 'master',
             'parameter': 'TRAVIS_OPENSTACK_VERSION'
@@ -124,6 +134,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla',
         'branch': 'stable/rocky',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-docker',
             'version': 'rocky',
             'parameter': 'TRAVIS_OPENSTACK_VERSION'
@@ -134,6 +145,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla',
         'branch': 'stable/stein',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-docker',
             'version': 'stein',
             'parameter': 'TRAVIS_OPENSTACK_VERSION'
@@ -144,6 +156,7 @@ RESSOURCES = {
         'repository': 'openstack/kolla',
         'branch': 'stable/train',
         'target': {
+            'organisation': 'osism',
             'repository': 'docker-kolla-docker',
             'version': 'train',
             'parameter': 'TRAVIS_OPENSTACK_VERSION'
@@ -156,7 +169,7 @@ def trigger_build(repository, branch, message):
 
     print("Triggering %s @ %s" % (RESSOURCES[repository]['target']['version'], RESSOURCES[repository]['target']['repository']))
 
-    url = "https://api.travis-ci.org/repo/osism%%2F%s/requests" % RESSOURCES[repository]['target']['repository']
+    url = "https://api.travis-ci.org/repo/%s%%2F%s/requests" % (RESSOURCES[repository]['target']['organisation'], RESSOURCES[repository]['target']['repository'])
     headers = {
         'Travis-API-Version': '3',
         'Authorization': "token %s" % TRAVIS_ACCESS_TOKEN
