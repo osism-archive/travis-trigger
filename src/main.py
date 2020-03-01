@@ -96,6 +96,17 @@ RESSOURCES = {
             'parameter': 'OPENSTACK_VERSION'
         }
     },
+    'openstack-train': {
+        'type': 'git',
+        'repository': 'openstack/kolla-ansible',
+        'branch': 'stable/train',
+        'target': {
+            'organisation': 'osism',
+            'repository': 'docker-kolla-ansible',
+            'version': 'train',
+            'parameter': 'OPENSTACK_VERSION'
+        }
+    },
     'openstack-master': {
         'type': 'git',
         'repository': 'openstack/kolla-ansible',

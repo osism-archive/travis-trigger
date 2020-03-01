@@ -15,7 +15,7 @@ The following repositories are being monitored for changes.
 |-------------------------|---------------------------------------------------|----------------------------|
 | ansible-community/ara   | master                                            | osism/docker-ara-server    |
 | ceph/ceph-ansible       | master, stable-3.2, stable-4.0                    | osism/docker-ceph-ansible  |
-| openstack/kolla-ansible | master, stable/rocky, stable/stein                | osism/docker-kolla-ansible |
+| openstack/kolla-ansible | master, stable/rocky, stable/stein, stable/train  | osism/docker-kolla-ansible |
 | openstack/kolla         | master, stable/rocky, stable/stein, stable/train  | osism/docker-kolla-docker  |
 
 The following images are being monitored for changes.
