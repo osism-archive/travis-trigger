@@ -74,17 +74,6 @@ RESSOURCES = {
             'parameter': 'CEPH_VERSION'
         }
     },
-    'openstack-queens': {
-        'type': 'git',
-        'repository': 'openstack/kolla-ansible',
-        'branch': 'stable/queens',
-        'target': {
-            'organisation': 'osism',
-            'repository': 'docker-kolla-ansible',
-            'version': 'queens',
-            'parameter': 'OPENSTACK_VERSION'
-        }
-    },
     'openstack-rocky': {
         'type': 'git',
         'repository': 'openstack/kolla-ansible',
