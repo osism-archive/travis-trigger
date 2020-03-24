@@ -63,6 +63,17 @@ RESSOURCES = {
             'parameter': 'CEPH_VERSION'
         }
     },
+    'ceph-octopus': {
+        'type': 'git',
+        'repository': 'ceph/ceph-ansible',
+        'branch': 'stable-5.0',
+        'target': {
+            'organisation': 'osism',
+            'repository': 'docker-ceph-ansible',
+            'version': 'octopus',
+            'parameter': 'CEPH_VERSION'
+        }
+    },
     'ceph-master': {
         'type': 'git',
         'repository': 'ceph/ceph-ansible',
